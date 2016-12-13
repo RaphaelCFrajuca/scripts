@@ -1,0 +1,2 @@
+pt Script para gerenciar usuários e definir limites de logins.
+us Script for Manage Users and set logins Limits.
