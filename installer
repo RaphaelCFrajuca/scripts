@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
-version=1
+version=2
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Installer..."
@@ -38,7 +38,7 @@ cyanClaro="\033[1;36m"
 branco="\033[1;37m"
 fim="\033[0m"
 
-echo -e "$menu""			Installer			$fim"
+echo -e "$menu""                        Installer                       $fim"
 notes=$(curl -s --max-time 2 sshtls.com.br/script/installer.txt)
 if [ "$notes" ]
 then
@@ -58,7 +58,7 @@ scriptcheck=$(echo $scriptslist | awk '{print $1}' | grep $script)
 if [ "$scriptcheck" ]
 then
 echo -e "$cyanClaro""Installing Script: $script"
-wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/$script 
+wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/$script
 rm /bin/$script  1>/dev/null 2>/dev/null
 rm /usr/bin/$script  1>/dev/null 2>/dev/null
 cp $script /bin/
