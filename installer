@@ -61,11 +61,8 @@ echo -e "$cyanClaro""Installing Script: $script"
 wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/$script
 rm /bin/$script  1>/dev/null 2>/dev/null
 rm /usr/bin/$script  1>/dev/null 2>/dev/null
-cp $script /bin/
+mv $script /bin/
 chmod a+x /bin/$script
-cp $script /usr/bin/
-chmod a+x /usr/bin/$script
-rm $script
 echo -e "$cyanClaro""Script $fim $vermelho""$script""$fim""$cyanClaro Installed Sucefully!"
 echo -e "$cyanClaro""Execute With this command: $fim""$verde$script""$fim"
 else
