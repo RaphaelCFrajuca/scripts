@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
-version=2
+version=4
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Installer..."
@@ -9,7 +9,8 @@ wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/installer
 rm /bin/installer 1>/dev/null 2>/dev/null
 cp installer /bin/
 chmod a+x /bin/installer
-installer
+echo "Run Script Again!"
+exit
 fi
 if [ -d /etc/installer ]
 then
