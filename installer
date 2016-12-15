@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Checking for Updates...."
-update=$(curl -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
+update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
 version=6
 if [ "$update" -gt "$version" ]
 then
