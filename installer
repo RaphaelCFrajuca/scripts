@@ -47,14 +47,15 @@ else
 echo -e "$cyanClaro""Notes from the Developer:$fim\n""Not Available."
 fi
 echo -e "$cyanClaro""Getting Scripts List...$fim"
-scriptslist=$(curl -s --max-time 3 https://raw.githubusercontent.com/BadGuy552/scripts/master/scripts.txt)
+curl -s --max-time 3 https://raw.githubusercontent.com/BadGuy552/scripts/master/scripts.txt > /etc/installer/scripts.txt
+scriptslist=$(cat /etc/installer/scripts.txt)
 echo -e "$cyanClaro""Scripts to Install:$fim"
-echo -e "$vermelho""$scriptslist $fim"
+echo -e "$vermelho""$(cat /etc/installer/scripts.txt) $fim"
 read -p "Insert Script Name to Install: " script
 
 if [ "$script" ]
 then
-scriptcheck=$(echo $scriptslist | awk '{print $1}' | grep $script)
+scriptcheck=$(cat /etc/installer/scripts.txt | awk '{print $1}' | grep $script)
 if [ "$scriptcheck" ]
 then
 echo -e "$cyanClaro""Installing Script: $script"
