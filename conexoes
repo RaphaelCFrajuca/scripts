@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep conexoes | awk '{print $2}')
-version=2
+version=3
 if [ "$update" -gt "$version" ]
 then
 echo "Updating script conexoes..."
 wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/conexoes
-rm /bin/installer 1>/dev/null 2>/dev/null
-mv installer /bin/ 1>/dev/null 2>/dev/null
-chmod a+x /bin/installer 1>/dev/null 2>/dev/null
+rm /bin/conexoes 1>/dev/null 2>/dev/null
+mv conexoes /bin/ 1>/dev/null 2>/dev/null
+chmod a+x /bin/conexoes 1>/dev/null 2>/dev/null
 echo "Run Script Again!"
 exit 1
 fi
