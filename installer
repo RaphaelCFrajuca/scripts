@@ -6,10 +6,9 @@ if [ "$update" -gt "$version" ]
 then
 echo "Updating Installer..."
 wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/installer
-rm /usr/bin/installer 1>/dev/null 2>/dev/null
 rm /bin/installer 1>/dev/null 2>/dev/null
-cp installer /usr/bin/
 cp installer /bin/
+chmod a+x /bin/installer
 installer
 fi
 if [ -d /etc/installer ]
@@ -39,7 +38,7 @@ branco="\033[1;37m"
 fim="\033[0m"
 
 echo -e "$menu""                        Installer                       $fim"
-notes=$(curl -s --max-time 2 sshtls.com.br/script/installer.txt)
+notes=$(curl -s --max-time 2 https://raw.githubusercontent.com/BadGuy552/scripts/master/installernotes.txt)
 if [ "$notes" ]
 then
 echo -e "$cyanClaro""Notes from the Developer:$fim\n""$vermelho""$notes""$fim"
