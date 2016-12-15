@@ -1,2 +1,2 @@
-installer 6
+installer 7
 users 4
