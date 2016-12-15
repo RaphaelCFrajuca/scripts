@@ -1,2 +1,3 @@
 users "Script for Manage Users and set logins Limits."
-conexoes "Script simple for view sites in your server by users"
+conexoes "Script simple for view sites in your server by users."
+configsquid "Script Written in python3 for install squid3 and put ssh in 443 port."
