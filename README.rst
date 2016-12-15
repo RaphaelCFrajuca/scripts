@@ -17,6 +17,7 @@ Obs: Execute como ROOT
     apt-get install wget curl python python3 nano -y #Debian
     wget https://raw.githubusercontent.com/BadGuy552/scripts/master/installer
     mv installer /bin/installer
+    chmod a+x /bin/installer
 
 
 
