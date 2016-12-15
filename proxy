@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep proxy | awk '{print $2}')
-version=2
+version=3
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Script proxy..."
@@ -56,7 +56,7 @@ sleep 1
 echo -e "\033[44;1;37m Testando....     \033[0m "
 while read proxys
 do
-case "$(curl --proxy $proxys -s --max-time 0.5 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
+case "$(curl --proxy $proxys -s --max-time 1 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
   [23]) echo -e "Proxy: $proxys [$verde OK \033[0m]" && echo -e "Proxy: $proxys [$verde OK \033[0m]" '#BadGuy-Proxy-checker' >> work.txt;;
   5) echo -e "Proxy: $proxys [$vermelho Erro \033[0m]" && echo -e "Proxy: $proxys [$vermelho Erro \033[0m]" '#BadGuy-Proxy-checker' >> fail.txt;;
   *) echo -e "Proxy: $proxys [$vermelho Não Funcionando. \033[0m]" && echo -e "Proxy: $proxys [$vermelho Não Funcionando. \033[0m]" '#BadGuy-Proxy-checker' >> fail.txt;;
