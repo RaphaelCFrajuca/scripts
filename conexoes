@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "Checking for Updates...."
+update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep conexoes | awk '{print $2}')
+version=9
+if [ "$update" -gt "$version" ]
+then
+echo "Updating script conexoes..."
+wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/conexoes
+rm /bin/installer 1>/dev/null 2>/dev/null
+mv installer /bin/ 1>/dev/null 2>/dev/null
+chmod a+x /bin/installer 1>/dev/null 2>/dev/null
+echo "Run Script Again!"
+exit 1
+fi
+clear
+echo "SITE:PORTA USUARIO"
+netstat -We | grep tcp | awk '{print $5" Usuario: "$7}'
+
