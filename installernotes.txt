@@ -1,0 +1,2 @@
+Portugues: Ola Pessoas, bem vindos ao meu instalador, vocês podem contribuir comigo através da minha pagina do github: https://github.com/BadGuy552/
+English: Hello people, welcome to my installer, you can contribute with me through my github page: https://github.com/BadGuy552/
