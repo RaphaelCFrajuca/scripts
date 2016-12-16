@@ -2,7 +2,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep hosts | awk '{print $2}')
-version=1
+version=2
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Script hosts..."
@@ -80,6 +80,7 @@ curlPUT=$(curl -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlTRACE=$(curl -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlOPTIONS=$(curl -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlDELETE=$(curl -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
+curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 else
 curl=$(curl --proxy $2 --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlGET=$(curl --proxy $2 -X GET --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
@@ -89,6 +90,7 @@ curlPUT=$(curl --proxy $2 -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" 
 curlTRACE=$(curl --proxy $2 -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlOPTIONS=$(curl --proxy $2 -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 curlDELETE=$(curl --proxy $2 -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
+curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" $hosts)
 fi
 
 echo -e "$cyanClaro Host\033[0m $amarelo $hosts \033[0m Status:  \n"
@@ -99,6 +101,7 @@ echo -e "$verde$curlPUT PUT \033[0m"
 echo -e "$verde$curlTRACE TRACE \033[0m"
 echo -e "$verde$curlOPTIONS OPTIONS \033[0m"
 echo -e "$verde$curlDELETE DELETE \033[0m"
+echo -e "$verde$curlCONNECT CONNECT \033[0m"
 done < $lista
 hostscat=$(cat $lista | wc -l)
 echo -e "$cyanClaro Foram Testados $hostscat Hosts. \033[0m"
