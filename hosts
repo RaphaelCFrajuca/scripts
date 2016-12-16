@@ -2,7 +2,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep hosts | awk '{print $2}')
-version=2
+version=3
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Script hosts..."
@@ -94,6 +94,39 @@ curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" $ho
 fi
 
 echo -e "$cyanClaro Host\033[0m $amarelo $hosts \033[0m Status:  \n"
+if [ "$curlGET" = "200" ]
+then
+echo -e "$verde$hosts $curlGET GET \033[0m" >> 200.txt
+fi
+if [ "$curlPOST" = "200" ]
+then
+echo -e "$verde$hosts $curlPOST POST \033[0m" >> 200.txt
+fi
+if [ "$curlHEAD" = "200" ]
+then
+echo -e "$verde$hosts $curlHEAD HEAD \033[0m" >> 200.txt
+fi
+if [ "$curlPUT" = "200" ]
+then
+echo -e "$verde$hosts $curlPUT PUT \033[0m" >> 200.txt
+fi
+if [ "$curlTRACE" = "200" ]
+then
+echo -e "$verde$hosts $curlTRACE TRACE \033[0m" >> 200.txt
+fi
+if [ "$curlOPTIONS" = "200" ]
+then
+echo -e "$verde$hosts $curlOPTIONS OPTIONS \033[0m" >> 200.txt
+fi
+if [ "$curlDELETE" = "200" ]
+then
+echo -e "$verde$hosts $curlDELETE DELETE \033[0m" >> 200.txt
+fi
+if [ "$curlCONNECT" = "200" ]
+then
+echo -e "$verde$hosts $curlGET CONNECT \033[0m" >> 200.txt
+fi
+
 echo -e "$verde$curlGET GET \033[0m"
 echo -e "$verde$curlPOST POST \033[0m"
 echo -e "$verde$curlHEAD HEAD \033[0m"
