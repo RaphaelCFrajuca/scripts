@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
-version=10
+version=11
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Installer..."
@@ -64,6 +64,10 @@ rm /bin/$script  1>/dev/null 2>/dev/null
 rm /usr/bin/$script  1>/dev/null 2>/dev/null
 mv $script /bin/
 chmod a+x /bin/$script
+wget -q https://raw.githubusercontent.com/BadGuy552/scripts/master/table
+rm /bin/table  1>/dev/null 2>/dev/null
+rm /usr/bin/table  1>/dev/null 2>/dev/null
+mv table /bin/
 echo -e "$cyanClaro""Script $fim $vermelho""$script""$fim""$cyanClaro Installed Sucefully!"
 echo -e "$cyanClaro""Execute With this command: $fim""$verde$script""$fim"
 else
