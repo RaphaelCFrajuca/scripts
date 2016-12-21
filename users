@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep users | awk '{print $2}')
-version=5
+version=6
 if [ "$update" -gt "$version" ]
 then
 echo "Updating script users..."
@@ -29,7 +29,6 @@ azulClaro="\033[1;34m"
 purpleClaro="\033[1;35m"
 cyanClaro="\033[1;36m"
 branco="\033[1;37m"
-versao=1.6.2
 if [ -d /etc/users/ ]
 then
 echo "Continuando.."
@@ -43,7 +42,7 @@ fi
 while true
 do
 clear
-echo -e "                       \033[41;1;37m SSHLIMITER $versao \033[0m "
+echo -e "                       \033[41;1;37m SSHLIMITER \033[0m "
 awk -F : '$3 >= 1000 { print $1 }' /etc/passwd |grep -v "nobody" > /etc/users/users.txt
 while read users
 do
@@ -55,8 +54,8 @@ limite=1
 fi
 count=$(ps x | grep $users | grep sshd | grep -v grep | grep -v pts | wc -l)
 proc=$(ps x | grep $users | grep sshd | grep -v grep | grep -v pts | awk -F " " '{print $1}')
-echo -e "..................................................."
-echo -e "    $verde$users\033[0m $count/$verde$limite\033[0m"
+echo -e "....................................................."
+table $users $count/$limite 
 if [ "$count" -gt "$limite" ]
 then
 echo -e "\033[44;1;37m Desconectando Usuarios:     \033[0m "
@@ -68,7 +67,7 @@ Desconectados!
 "
 fi
 done < /etc/users/users.txt
-echo -e "..................................................."
+echo -e "....................................................."
 sleep 2.5s
 clear
 done
