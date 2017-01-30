@@ -4,4 +4,4 @@ configsquid "Script Written in python3 for install squid3 and put ssh in 443 por
 hosts "Script for get status code of host."
 proxy "Script for test proxys."
 table "For create simple tables in terminal."
-openssh-install
+openssh-install "Script to install openssh-server 5.9p1"
