@@ -70,7 +70,7 @@ fi
 function ArchTest {
 echo -e "$vermelho
 Sua arquitetura: $(arch)$fim"
-if [[ "$(arch)" != "x86" && "$(arch)" != "x86_64" ]]
+if [[ "$(arch)" != "i386" && "$(arch)" != "x86_64" ]]
 then
 echo "Sua arquitetura ainda não é suportada por este script."
 exit 1
