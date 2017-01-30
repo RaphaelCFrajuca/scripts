@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep installer | awk '{print $2}')
-version=12
+version=13
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Installer..."
