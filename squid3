@@ -103,7 +103,7 @@ if [ "$interface" = "" ]
 then
 interface=eth0
 fi
-ethtool -K $interface tx off rx off 1>/dev/null 2>/dev/null
+ethtool -K $interface tx on rx off 1>/dev/null 2>/dev/null
 
 echo -e "$verde
 Configuração terminada.$fim"
