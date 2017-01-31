@@ -1,6 +1,6 @@
 users "Script for Manage Users and set logins Limits."
 conexoes "Script simple for view sites in your server by users."
-configsquid "Script Written in python3 for install squid3 and put ssh in 443 port."
+squid3 "Script Written in bash for install squid3 and put ssh in 443 port."
 hosts "Script for get status code of host."
 proxy "Script for test proxys."
 table "For create simple tables in terminal."
