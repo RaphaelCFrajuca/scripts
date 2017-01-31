@@ -32,7 +32,9 @@ echo -e "$menu
 			SQUID3			$fim"
 			
 echo -e "$cyanClaro
-Este é um script que configura uma nova versão do SQUID3 para sistemas Debian-Based.$fim"
+Este é um script que configura uma nova versão do SQUID3 para sistemas Debian-Based.
+Neste script não a nenhuma garantia de funcionamento ou suporte do autor.
+$fim"
 read -p "Pressione Qualquer Tecla para Continuar..."
 read -p "Digite seu IP: " ip
 echo -e "$cyanClaro
