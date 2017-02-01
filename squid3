@@ -97,15 +97,21 @@ Recarregando serviços...$fim"
 squid3 -k reconfigure 1>/dev/null 2>/dev/null
 service ssh restart 1>/dev/null 2>/dev/null
 
-echo -e "$verde
-Correção de problemas de pacotes no SSH...$fim"
-apt-get install ethtool -y 1>/dev/null 2>/dev/null
-read -p "Digite o nome da sua interface de rede (Padrão: eth0): " interface
-if [ "$interface" = "" ]
-then
-interface=eth0
-fi
-ethtool -G $interface rx 999999999 tx 999999999 1>/dev/null 2>/dev/null
+# echo -e "$verde
+# Correção de problemas de pacotes no SSH...$fim"
+# apt-get install ethtool -y 1>/dev/null 2>/dev/null
+# read -p "Digite o nome da sua interface de rede (Padrão: eth0): " interface
+# if [ "$interface" = "" ]
+# then
+# interface=eth0
+# fi
+# ethtool -G $interface rx 999999999 tx 999999999 1>/dev/null 2>/dev/null
+
+echo -e "
+.claro.com.br
+.vivo.com.br
+.oi.com.br
+.tim.com.br" > /etc/payloads
 
 echo -e "$verde
 Configuração terminada.$fim"
