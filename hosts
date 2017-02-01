@@ -2,7 +2,7 @@
 #!/bin/bash
 echo "Checking for Updates...."
 update=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/BadGuy552/scripts/master/v | grep hosts | awk '{print $2}')
-version=5
+version=6
 if [ "$update" -gt "$version" ]
 then
 echo "Updating Script hosts..."
@@ -72,25 +72,25 @@ while read hosts
 do
 if [ "$3" = "--no-proxy" ]
 then
-curl=$(curl --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlGET=$(curl -X GET --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlPOST=$(curl -X POST --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlHEAD=$(curl -X HEAD --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlPUT=$(curl -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlTRACE=$(curl -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlOPTIONS=$(curl -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlDELETE=$(curl -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" https://$hosts)
+curl=$(curl --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlGET=$(curl -X GET --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlPOST=$(curl -X POST --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlHEAD=$(curl -X HEAD --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlPUT=$(curl -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlTRACE=$(curl -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlOPTIONS=$(curl -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlDELETE=$(curl -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" https://$hosts --header "Host: $hosts")
 else
-curl=$(curl --proxy $2 --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlGET=$(curl --proxy $2 -X GET --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlPOST=$(curl --proxy $2 -X POST --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlHEAD=$(curl --proxy $2 -X HEAD --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlPUT=$(curl --proxy $2 -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlTRACE=$(curl --proxy $2 -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlOPTIONS=$(curl --proxy $2 -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlDELETE=$(curl --proxy $2 -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts)
-curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" https://$hosts)
+curl=$(curl --proxy $2 --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlGET=$(curl --proxy $2 -X GET --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlPOST=$(curl --proxy $2 -X POST --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlHEAD=$(curl --proxy $2 -X HEAD --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlPUT=$(curl --proxy $2 -X PUT --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlTRACE=$(curl --proxy $2 -X TRACE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlOPTIONS=$(curl --proxy $2 -X OPTIONS --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlDELETE=$(curl --proxy $2 -X DELETE --max-time 3 -s -o /dev/null -w "%{http_code}" http://$hosts --header "Host: $hosts")
+curlCONNECT=$(curl -X CONNECT --max-time 3 -s -o /dev/null -w "%{http_code}" https://$hosts --header "Host: $hosts")
 fi
 
 echo -e "$cyanClaro Host\033[0m $amarelo $hosts \033[0m Status:  \n"
