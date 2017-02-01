@@ -131,7 +131,7 @@ echo -e "$verde$hosts $curlDELETE DELETE \033[0m" >> 200.txt
 fi
 if [ "$curlCONNECT" = "200" ]
 then
-echo "GET https://$hosts HTTP/1.1\r\nHost: $hosts\r\n\r\n[netData]\r\n\r\n" >> payloads.txt
+echo "CONNECT https://$hosts HTTP/1.1\r\nHost: $hosts\r\n\r\n[netData]\r\n\r\n" >> payloads.txt
 echo -e "$verde$hosts $curlGET CONNECT \033[0m" >> 200.txt
 fi
 
