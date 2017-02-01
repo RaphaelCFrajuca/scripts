@@ -91,7 +91,11 @@ Configurando SSH...$fim"
 echo -e "
 
 Port 443" >> /etc/ssh/sshd_config
-
+echo -e "
+.claro.com.br
+.vivo.com.br
+.oi.com.br
+.tim.com.br" > /etc/payloads
 echo -e "$cyanClaro
 Recarregando serviços...$fim"
 squid3 -k reconfigure 1>/dev/null 2>/dev/null
@@ -107,11 +111,6 @@ service ssh restart 1>/dev/null 2>/dev/null
 # fi
 # ethtool -G $interface rx 999999999 tx 999999999 1>/dev/null 2>/dev/null
 
-echo -e "
-.claro.com.br
-.vivo.com.br
-.oi.com.br
-.tim.com.br" > /etc/payloads
 
 echo -e "$verde
 Configuração terminada.$fim"
