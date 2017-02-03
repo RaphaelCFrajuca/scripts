@@ -13,7 +13,7 @@ Obs: Execute como ROOT
 ::
 
     apt-get update
-    apt-get upgrade
+    apt-get upgrade -y
     apt-get install wget curl python python3 nano -y #Debian
     wget https://raw.githubusercontent.com/BadGuy552/scripts/master/installer
     mv installer /bin/installer
