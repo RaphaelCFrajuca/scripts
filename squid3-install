@@ -29,8 +29,8 @@ branco="\033[1;37m"
 fim="\033[0m"
 
 echo -e "$menu
-			SQUID3			$fim"
-			
+                        SQUID3                  $fim"
+
 echo -e "$cyanClaro
 Este é um script que configura uma nova versão do SQUID3 para sistemas Debian-Based.
 Neste script não a nenhuma garantia de funcionamento ou suporte do autor.
@@ -41,17 +41,18 @@ echo -e "$cyanClaro
 Instalando SQUID3...$fim"
 apt-get update 1>/dev/null 2>/dev/null
 apt-get upgrade -y 1>/dev/null 2>/dev/null
-apt-get install squid3 -y 1>/dev/null 2>/dev/null 
+apt-get install squid3 -y 1>/dev/null 2>/dev/null
 
 echo -e "$azulClaro
 Configurando SQUID3...$fim"
 
-echo "# Portas do SQUID
+echo "
+# Portas do SQUID
 http_port 80
 http_port 8080
 http_port 3128
 
-# ACL`s e Liberações
+# ACLs e Liberações
 acl accept dstdomain -i $ip
 acl allowed dstdomain -i /etc/payloads
 acl combr dstdomain -i .com.br
@@ -135,6 +136,7 @@ navegue.vivo.ddivulga.com/pacote
 m.clarosomdechamada.com.br
 .clarosomdechamada.com.br
 .portalsva2.vivo.com.br" > /etc/payloads
+
 echo -e "$cyanClaro
 Recarregando serviços...$fim"
 squid3 -k reconfigure 1>/dev/null 2>/dev/null
