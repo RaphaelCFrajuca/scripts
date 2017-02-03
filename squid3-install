@@ -52,7 +52,7 @@ http_port 8080
 http_port 3128
 
 # ACL`s e Liberações
-acl accept dstdomain -i ssh.sshtls.com.br
+acl accept dstdomain -i $ip
 acl allowed dstdomain -i /etc/payloads
 acl combr dstdomain -i .com.br
 acl all src 0.0.0.0/0.0.0.0
