@@ -46,44 +46,18 @@ apt-get install squid3 -y 1>/dev/null 2>/dev/null
 echo -e "$azulClaro
 Configurando SQUID3...$fim"
 
-echo "# Portas abilitadas para funcionar no SQUID3
-
-http_port 8080
+echo "
 http_port 80
+http_port 8080
 http_port 3128
-
-# Hostname do SQUID3
-visible_hostname BadGuy
-
-# Local aonde estão os hosts abilitados a passar pelo SQUID3 (ACL)
-acl payloads dstdomain -i '/etc/payloads'
-acl net dstdomain $ip
-
-# Regras
-http_access allow net
-http_access allow payloads
-http_access deny all
-
-# Desabilitar encaminhação do ip original da maquina
-forwarded_for off
-
-# Ganhos de performançe na hierarchy_stoplist
-hierarchy_stoplist cgi-bin ?
-
-# Tempo limite de conexões aceitas e negadas
-negative_ttl 3 minutes
-positive_dns_ttl 5 minutes
-
-# Terminar imediatamente conexões finalizadas de clientes
-half_closed_clients off
-
-# Desabilitar memory_pools (Ganho de performançe em RAM)
-memory_pools off
-
-# Fix
-strip_query_terms off
-detect_broken_pconn on
-pipeline_prefetch on" > /etc/squid3/squid.conf
+acl accept dstdomain -i $ip
+acl allowed dstdomain -i "/etc/payloads"
+acl combr dstdomain -i .com.br
+acl all src 0.0.0.0/0.0.0.0
+http_access allow accept
+http_access allow allowed
+http_access allow combr
+http_access deny all" > /etc/squid3/squid.conf
 
 echo -e "$azulClaro
 Configurando SSH...$fim"
@@ -92,14 +66,46 @@ echo -e "
 
 Port 443" >> /etc/ssh/sshd_config
 echo -e "
+.bookclaro.com.br
+.claro.com.ar
 .claro.com.br
-.vivo.com.br
+.claro.com.co
+.claro.com.ec
+.claro.com.gt
+.claro.com.ni
+.claro.com.pe
+.claro.com.sv
+.claro.cr
+.clarocurtas.com.br
+.claroideas.com
+.claroideias.com.br
+.claromusica.com
+.clarosomdechamada.com.br
+.clarovideo.com
+.facebook.net
+.netclaro.com.br
 .oi.com.br
-.tim.com.br" > /etc/payloads
+.oimusica.com.br
+.speedtest.net
+.tim.com.br
+.timanamaria.com.br
+.vivo.com.br
+.d1n212ccp6ldpw.cloudfront.net
+.rdio.com
+.ec2-52-22-60-103.compute-1.amazonaws.com
+.portalrecarga.vivo.com.br/recarga/home/
+.w1716.smartadserver.com
+interatividade.vivo.ddivulga.com/produto
+navegue.vivo.ddivulga.com/pacote
+.m.clarosomdechamada.com.br
+m.clarosomdechamada.com.br
+.clarosomdechamada.com.br
+.portalsva2.vivo.com.br" > /etc/payloads
 echo -e "$cyanClaro
 Recarregando serviços...$fim"
 squid3 -k reconfigure 1>/dev/null 2>/dev/null
 service ssh restart 1>/dev/null 2>/dev/null
+service squid3 restart 1>/dev/null 2>/dev/null
 
 # echo -e "$verde
 # Correção de problemas de pacotes no SSH...$fim"
